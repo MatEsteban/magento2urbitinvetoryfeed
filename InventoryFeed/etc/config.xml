@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <inventoryfeed_config>
+            <cron>
+                <cache_duration>5</cache_duration>
+            </cron>
+            <filter>
+                <category></category>
+                <stock>0</stock>
+                <tag_name></tag_name>
+                <tag_value></tag_value>
+            </filter>
+        </inventoryfeed_config>
+    </default>
+</config>

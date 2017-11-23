@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="urbit" translate="label" sortOrder="200">
+            <label>Urbit</label>
+        </tab>
+        <section id="inventoryfeed_config" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Inventory Feed</label>
+            <tab>urbit</tab>
+            <resource>Urbit_InventoryFeed::config</resource>
+            <group id="cron" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Feed Cache</label>
+                <field id="cache_duration" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cache duration</label>
+                    <comment>In minutes</comment>
+                </field>
+            </group>
+            <group id="filter" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Inventory Filter</label>
+                <field id="category" translate="label" type="multiselect" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Categories</label>
+                    <source_model>Urbit\InventoryFeed\Model\Config\Source\Category</source_model>
+                </field>
+                <field id="tag_name" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>"Tag" Attribute Name</label>
+                    <source_model>Urbit\InventoryFeed\Model\Config\Source\ProductAttributes</source_model>
+                </field>
+                <field id="tag_value" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>"Tag" Attribute Value</label>
+                </field>
+            </group>
+            <group id="taxes" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Taxes</label>
+                <field id="tax_country" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tax Country</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
