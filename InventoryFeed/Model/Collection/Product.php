@@ -148,30 +148,37 @@ class Product implements IteratorAggregate
             $collection->setStore($this->_store->getId());
         }
 
-        // filtering by category
-        if ($filter['category'] && !empty($filter['category'])) {
-            $collection->addCategoriesFilter([
-                'in' => explode(',', $filter['category'])
-            ]);
-        }
+        // filtration by products filter
+        if ($filter['products'] && !empty($filter['products'])) {
 
-        // filtering by tag
-        if ($filter['tag_name'] && $filter['tag_value']) {
-            /** @var Attribute $attribute */
-            $attribute = $this->_attributeCollection->getItemByColumnValue('attribute_code', $filter['tag_name']);
+            $collection->addFieldToFilter('entity_id', ['in' => explode(',', $filter['products'])]);
 
-            $options = $attribute->getFrontend()->getSelectOptions() ?: [];
-
-            foreach ($options as $option) {
-                if (strtolower($option['label']) === strtolower($filter['tag_value'])) {
-                    $filter['tag_value'] = $option['value'];
-                    break;
-                }
+        } else {
+            // filtering by category
+            if ($filter['category'] && !empty($filter['category'])) {
+                $collection->addCategoriesFilter([
+                    'in' => explode(',', $filter['category'])
+                ]);
             }
 
-            $collection->addAttributeToFilter($filter['tag_name'], [
-                'eq' => $filter['tag_value'],
-            ]);
+            // filtering by tag
+            if ($filter['tag_name'] && $filter['tag_value']) {
+                /** @var Attribute $attribute */
+                $attribute = $this->_attributeCollection->getItemByColumnValue('attribute_code', $filter['tag_name']);
+
+                $options = $attribute->getFrontend()->getSelectOptions() ?: [];
+
+                foreach ($options as $option) {
+                    if (strtolower($option['label']) === strtolower($filter['tag_value'])) {
+                        $filter['tag_value'] = $option['value'];
+                        break;
+                    }
+                }
+
+                $collection->addAttributeToFilter($filter['tag_name'], [
+                    'eq' => $filter['tag_value'],
+                ]);
+            }
         }
 
         $this->_products = $collection;

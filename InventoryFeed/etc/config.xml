@@ -10,6 +10,7 @@
                 <stock>0</stock>
                 <tag_name></tag_name>
                 <tag_value></tag_value>
+                <products></products>
             </filter>
         </inventoryfeed_config>
     </default>

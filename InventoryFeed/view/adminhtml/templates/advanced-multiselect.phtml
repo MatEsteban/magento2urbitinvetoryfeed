@@ -1,0 +1,41 @@
+<div class="if-advanced-multiselect-wrapper">
+    <div class="if-advanced-multiselect-load-wrapper">
+        <h4>Loading</h4>
+    </div>
+
+    <h3 class="if-advanced-multiselect-title">Products</h3>
+    <div class="if-advanced-multiselect-row">
+        <select id="inventoryfeed_config_attributes_additional_from"
+                name="groups[filter][fields][products][variant][]"
+                class="if-advanced-multiselect select multiselect admin__control-multiselect"
+                size="10"
+                data-ui-id="select-groups-attributes-fields-additional-value"
+                data-right="#inventoryfeed_config_attributes_additional_to"
+                data-right-selected="#inventoryfeed_config_attributes_additional_right_button"
+                data-left-selected="#inventoryfeed_config_attributes_additional_left_button"
+                multiple="multiple">
+        </select>
+
+        <div class="if-advanced-multiselect-controls">
+            <span class="if-advanced-multiselect-control" id="inventoryfeed_config_attributes_additional_right_button">></span>
+            <span class="if-advanced-multiselect-control" id="inventoryfeed_config_attributes_additional_left_button"><</span>
+        </div>
+
+        <select id="inventoryfeed_config_attributes_additional_to"
+                name="groups[filter][fields][products][value][]"
+                class="if-advanced-multiselect select multiselect admin__control-multiselect"
+                size="10"
+                data-ui-id="select-groups-attributes-fields-additional-value"
+                multiple="multiple">
+
+                <?php foreach ($block->getSelectedProducts() as $product): ?>
+                    <option value="<?= $product->getId() ?>"><?= $product->getId() ?>: <?= $product->getName() ?></option>
+                <?php endforeach; ?>
+        </select>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var ifGetAllProductsUrl = '<?= $block->getUrl('urbitinventoryfeed/productfilter/getallproducts') ?>';
+    var ifActivateProductFilter = true;
+</script>
