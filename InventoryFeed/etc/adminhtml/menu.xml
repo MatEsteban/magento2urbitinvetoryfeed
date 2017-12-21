@@ -13,7 +13,7 @@
             module="Urbit_InventoryFeed"
             sortOrder="1"
             action="adminhtml/system_config/edit/section/inventoryfeed_config/index"
-            parent="Urbit::AdminMenu"
+            parent="Urbit_InventoryFeed::AdminMenu"
             resource="Magento_Backend::content"
         />
     </menu>

@@ -29,6 +29,10 @@
                 <field id="tag_value" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>"Tag" Attribute Value</label>
                 </field>
+                <field id="products" translate="label" type="multiselect" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Urbit\InventoryFeed\Block\Adminhtml\System\Config\AdvancedMultiselect</frontend_model>
+                    <attribute type="shared">1</attribute>
+                </field>
             </group>
             <group id="taxes" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Taxes</label>
